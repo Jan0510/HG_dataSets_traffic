@@ -28,11 +28,13 @@ try:
 
 		old_imagefile = os.path.join(image_path, file)
 		new_imagefile=os.path.join(image_path, number+filetype)
-		os.rename(old_imagefile,new_imagefile)
 		
 		old_txtfile = os.path.join(lable_path, filename + ".txt")
 		new_txtfile = os.path.join(lable_path, number+".txt")
-		os.rename(old_txtfile,new_txtfile)
+		# 如果存在对应的标签文件
+		if os.path.exists(old_txtfile):
+			os.rename(old_imagefile,new_imagefile)
+			os.rename(old_txtfile,new_txtfile)
 	  
 
 		count+=1
